@@ -9,6 +9,7 @@
 #include "World.h"
 #include "InputSystem.h"
 #include "../Cauto/LifeGame2DWorld.h"
+#include "../Cauto/NaSchWorld.h"
 
 Application::Application()
 {
@@ -25,7 +26,7 @@ void Application::Create()
 
 	MainWindow = std::make_shared<CqdWindow>(1280, 720); 
 	MainView = std::make_shared<RenderView>(MainWindow);
-	MainWorld = std::make_shared<LifeGame2DWorld>();
+	MainWorld = std::make_shared<NaSchWorld>();
 	MainInput = std::make_shared<InputSystem>();
 	MainView->BindWorld(MainWorld);
 
