@@ -86,5 +86,10 @@ void Wolfram184World::WolframUpdate()
 
 bool Wolfram184World::CheckPosHasCell(uint8_t CellSpaceIndex, int x) const
 {
-	return CellSpaceIndex >= 0 && CellSpaceIndex < 2 && x >= 0 && x < RoadLength && CellSpace[CellSpaceIndex][x];
+	if(x < 0)
+		return CheckPosHasCell(CellSpaceIndex, x + RoadLength);
+
+	x %= RoadLength;
+	CellSpaceIndex %= 2;
+	return CellSpace[CellSpaceIndex][x];
 }

@@ -1,13 +1,16 @@
 #include <iostream>
-#include "Core/Application.h"
 #include <unistd.h>
 #include <SDL.h>
+#include "Core/Application.h"
+#include "Cauto/NaSchWorld.h"
+#include "Cauto/Wolfram184World.h"
+#include "Cauto/BMLWorld.h"
 
 int main()
 {
 	try 
 	{
-		Application::Get().Create();
+		Application::Get().Create<BMLWorld>();
 
 		Application::Get().Run();
 

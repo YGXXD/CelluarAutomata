@@ -24,7 +24,7 @@ void NaSchWorld::InitNaSchWorld()
 	CurrCellSpaceIndex = 0;
 	for(int i = 0; i < 2; ++i)
 	{
-		CellSpace[i] = std::vector<std::vector<CellInfo>>(RoadWidth, std::vector<CellInfo>(RoadLength));
+		CellSpace[i] = std::vector<std::vector<NaSchCellInfo>>(RoadWidth, std::vector<NaSchCellInfo>(RoadLength));
 	}
 
 	CellArray = std::vector<std::vector<std::weak_ptr<Actor>>>(RoadWidth, std::vector<std::weak_ptr<Actor>>(RoadLength));
@@ -36,8 +36,8 @@ void NaSchWorld::InitNaSchWorld()
 	{
 		for(int j = 0; j < RoadLength; j++)
 		{
-			// 初始化五分之一概率生成细胞
-			bool BirthProbability = (rand() % 5) == 0 && j < 150;
+			// 初始化概率生成细胞
+			bool BirthProbability = (rand() % 4) == 0;
 			if(BirthProbability)
 			{
 				CellSpace[CurrCellSpaceIndex][i][j] = {true, 0};
@@ -71,15 +71,14 @@ void NaSchWorld::UpdateNaSchWorld()
 					CarSpeed = Math::Max(CarSpeed - 1, 0); //慢随机化
 				
 				// 更新细胞
-				if(j + CarSpeed < RoadLength)
+				int NewJ = (j + CarSpeed) % RoadLength;
+				CurrCellSpace[i][NewJ] = {true, CarSpeed};
+				if(CellArray[i][NewJ].expired())
 				{
-					CurrCellSpace[i][j + CarSpeed] = {true, CarSpeed};
-					if(CellArray[i][j + CarSpeed].expired())
-					{
-						std::string Name = std::to_string(i) + "," + std::to_string(j + CarSpeed);
-						CellArray[i][j + CarSpeed] = SpawnActor<Actor>(Name, Vector3(0, XStart + j, YStart + i));
-					}
-				}																											
+					std::string Name = std::to_string(i) + "," + std::to_string(NewJ);
+					CellArray[i][NewJ] = SpawnActor<Actor>(Name, Vector3(0, XStart + NewJ, YStart + i));
+				}
+
 				if(!CurrCellSpace[i][j].bHasCar)
 				{
 					if(!CellArray[i][j].expired())
@@ -87,31 +86,28 @@ void NaSchWorld::UpdateNaSchWorld()
 						DestroyActor(CellArray[i][j].lock());
 					}	
 				}
-				LastCellSpace[i][j] = { };
 			}	
 		}
-
-//		int num = 0;
-//		for(int j = 0; j < RoadLength; ++j)
-//		{
-//			if(!CellArray[i][j].expired())	
-//			{
-//				num++;
-//			}
-//		}
-//		std::cout << num << std::endl;
+	}
+	for(int i = 0; i < RoadWidth; ++i)
+	{
+		for(int j = 0; j < RoadLength; ++j)
+		{
+			LastCellSpace[i][j] = { };
+		}
 	}
 }
 
-int NaSchWorld::GetEmptyFront(int CellSpaceIndex, int x, int y)
+int NaSchWorld::GetEmptyFront(uint8_t CellSpaceIndex, int x, int y)
 {
+	if(x < 0 || y < 0 || x >= RoadWidth || y >= RoadLength)
+		return 0;
+
+	CellSpaceIndex %= 2;
 	int Speed = 1;
 	for(; Speed <= MaxSpeed; ++Speed)
 	{
-		if(y + Speed >= RoadLength)
-			break;
-
-		if(CellSpace[CellSpaceIndex][x][y + Speed].bHasCar)
+		if(CellSpace[CellSpaceIndex][x][(y + Speed) % RoadLength].bHasCar)
 		{
 			return --Speed;
 		}
