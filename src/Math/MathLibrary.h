@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MATH_LIBRARY_H
+#define MATH_LIBRARY_H
 
 class Matrix4X4;
 class Vector2;
@@ -87,3 +88,5 @@ inline T Math::Linear(T a, T b, float Value)
 {
 	return (b - a) * Clamp<float>(0.0, 1.0, Value) + a;
 }
+
+#endif

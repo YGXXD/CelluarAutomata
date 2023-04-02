@@ -1,4 +1,6 @@
-#pragma once
+#ifndef DELEGATE_H
+#define DELEGATE_H
+
 #include <memory>
 #include <vector>
 
@@ -268,3 +270,5 @@ inline void std::MultiDelegate<ArgsT...>::Clear()
 	//引用计数为0时自动释放对象
 	dlgtPtrArray.clear();
 }
+
+#endif

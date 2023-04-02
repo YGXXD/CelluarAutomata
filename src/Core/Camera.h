@@ -1,4 +1,6 @@
-#pragma once
+#ifndef CAMERA_H
+#define CAMERA_H
+
 #include "Actor.h"
 
 class Camera : public Actor 
@@ -33,3 +35,5 @@ private:
 	float NearZ;
 	float FarZ;
 };
+
+#endif

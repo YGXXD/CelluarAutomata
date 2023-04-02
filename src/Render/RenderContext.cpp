@@ -87,8 +87,8 @@ void RenderContext::SelectPhysicalDevice()
 	// 获取物理显示设备
 	uint32_t EnumPhysicalDevicesNum;
 	CheckVR(vkEnumeratePhysicalDevices(Instance, &EnumPhysicalDevicesNum, nullptr));
-	VkPhysicalDevice EnumPhysicalDevices[EnumPhysicalDevicesNum];
-	CheckVR(vkEnumeratePhysicalDevices(Instance, &EnumPhysicalDevicesNum, EnumPhysicalDevices));
+	std::vector<VkPhysicalDevice> EnumPhysicalDevices(EnumPhysicalDevicesNum);
+	CheckVR(vkEnumeratePhysicalDevices(Instance, &EnumPhysicalDevicesNum, &EnumPhysicalDevices[0]));
 
 	for(int i = 0; i < EnumPhysicalDevicesNum; i++)
 	{

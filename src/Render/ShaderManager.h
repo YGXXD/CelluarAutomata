@@ -1,4 +1,6 @@
-#pragma once
+#ifndef SHADER_MANAGER_H
+#define SHADER_MANAGER_H
+
 #include <unordered_map>
 #include <string>
 #include <vector>
@@ -52,3 +54,5 @@ private:
 	VkDeviceMemory UniformMemory = nullptr;
 	void* UniformMapPtr = nullptr;
 };
+
+#endif

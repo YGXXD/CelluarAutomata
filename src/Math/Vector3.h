@@ -1,4 +1,5 @@
-#pragma once
+#ifndef VECTOR_3_H
+#define VECTOR_3_H
 
 class Vector2;
 class Vector4;
@@ -55,3 +56,5 @@ public:
 	float z;
 
 };
+
+#endif

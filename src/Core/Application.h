@@ -1,4 +1,6 @@
-#pragma once
+#ifndef APPLICATION_H
+#define APPLICATION_H
+
 #include <memory>
 #include "Timer.h"
 #include "World.h"
@@ -92,3 +94,4 @@ private:
 	std::shared_ptr<InputSystem> MainInput;
 };
 
+#endif

@@ -1,4 +1,6 @@
-#pragma once
+#ifndef CQD_WINDOW_H
+#define CQD_WINDOW_H
+
 #include <SDL_video.h>
 #include "../Render/RenderInterface.h"
 
@@ -25,3 +27,5 @@ private:
 	uint32_t WindowHeight;
 	SDL_Window* Window = nullptr;
 };
+
+#endif

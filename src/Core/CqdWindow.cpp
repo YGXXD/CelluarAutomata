@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include <SDL_vulkan.h>
 #include <iostream>
+#include <vector>
 
 CqdWindow::CqdWindow(uint32_t Width, uint32_t Height)
 {
@@ -17,7 +18,7 @@ CqdWindow::CqdWindow(uint32_t Width, uint32_t Height)
 	// 获取SDL对Vulkan实例的扩展
 	uint32_t SDLVulkanExtensionsNum;
 	SDL_Vulkan_GetInstanceExtensions(Window, &SDLVulkanExtensionsNum, nullptr);
-	const char* SDLVulkanExtensionNames[SDLVulkanExtensionsNum];
+	std::vector<const char*> SDLVulkanExtensionNames(SDLVulkanExtensionsNum);
 	SDL_Vulkan_GetInstanceExtensions(Window, &SDLVulkanExtensionsNum, &SDLVulkanExtensionNames[0]);
 		
 	std::cout << "SDL需要开启Vulkan实例扩展名:" << std::endl; 

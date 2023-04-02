@@ -1,4 +1,6 @@
-#pragma once
+#ifndef ACTOR_H
+#define ACTOR_H
+
 #include "../Math/Vector3.h"
 #include <string>
 
@@ -47,3 +49,5 @@ private:
 	Vector3 Location;
 	Vector3 Scale;
 };
+
+#endif

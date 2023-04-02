@@ -202,8 +202,8 @@ void RenderView::QuerySurfaceProperties()
 
 	uint32_t SupportPresentModesNum;
 	vkGetPhysicalDeviceSurfacePresentModesKHR(RenderContext::Get().PhysicalDevice, SurfaceKHR, &SupportPresentModesNum, nullptr);
-	VkPresentModeKHR SupportPresentModes[SupportPresentModesNum];
-	vkGetPhysicalDeviceSurfacePresentModesKHR(RenderContext::Get().PhysicalDevice, SurfaceKHR, &SupportPresentModesNum, SupportPresentModes);
+	std::vector<VkPresentModeKHR> SupportPresentModes(SupportPresentModesNum);
+	vkGetPhysicalDeviceSurfacePresentModesKHR(RenderContext::Get().PhysicalDevice, SurfaceKHR, &SupportPresentModesNum, &SupportPresentModes[0]);
 	
 	std::cout << "  " << "PresentModes:";
 	for(int i = 0; i < SupportPresentModesNum; i++)
@@ -224,8 +224,8 @@ void RenderView::QuerySurfaceProperties()
 
 	uint32_t SupportFormatsNum;
 	vkGetPhysicalDeviceSurfaceFormatsKHR(RenderContext::Get().PhysicalDevice, SurfaceKHR, &SupportFormatsNum, nullptr);
-	VkSurfaceFormatKHR SupportFormatsKHR[SupportFormatsNum];
-	vkGetPhysicalDeviceSurfaceFormatsKHR(RenderContext::Get().PhysicalDevice, SurfaceKHR, &SupportFormatsNum, SupportFormatsKHR);
+	std::vector<VkSurfaceFormatKHR> SupportFormatsKHR(SupportFormatsNum);
+	vkGetPhysicalDeviceSurfaceFormatsKHR(RenderContext::Get().PhysicalDevice, SurfaceKHR, &SupportFormatsNum, &SupportFormatsKHR[0]);
 
 	bool IsSupportRenderFormat = false;
 	std::cout << "  " << "SurfaceFormats And ColorSpace:";

@@ -1,4 +1,6 @@
-#pragma once
+#ifndef RENDER_UTIL_H
+#define RENDER_UTIL_H
+
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -163,8 +165,8 @@ namespace VulkanUtil
 		// 获取Vulkan实例支持扩展
 		uint32_t VulkanInstExtensionsNum;
 		CheckVR(vkEnumerateInstanceExtensionProperties(nullptr, &VulkanInstExtensionsNum, nullptr));
-		VkExtensionProperties VulkanExtensionProperties[VulkanInstExtensionsNum];	
-		CheckVR(vkEnumerateInstanceExtensionProperties(nullptr, &VulkanInstExtensionsNum, VulkanExtensionProperties));
+		std::vector<VkExtensionProperties> VulkanExtensionProperties(VulkanInstExtensionsNum);	
+		CheckVR(vkEnumerateInstanceExtensionProperties(nullptr, &VulkanInstExtensionsNum, &VulkanExtensionProperties[0]));
 		
 		std::cout << "Vulkan实例支持扩展名:" << std::endl; 
 		for(int i = 0; i < VulkanInstExtensionsNum; i++)
@@ -175,8 +177,8 @@ namespace VulkanUtil
 		// 获取Vulkan实例可开启层
 		uint32_t VulkanLayersNum;
 		CheckVR(vkEnumerateInstanceLayerProperties(&VulkanLayersNum, nullptr));
-		VkLayerProperties VulkanLayerProperties[VulkanLayersNum];
-		CheckVR(vkEnumerateInstanceLayerProperties(&VulkanLayersNum, VulkanLayerProperties));
+		std::vector<VkLayerProperties> VulkanLayerProperties(VulkanLayersNum);
+		CheckVR(vkEnumerateInstanceLayerProperties(&VulkanLayersNum, &VulkanLayerProperties[0]));
 		
 		std::cout << "Vulkan实例可开启层名:" << std::endl;
 		for(int i = 0; i < VulkanLayersNum; i++)
@@ -192,8 +194,8 @@ namespace VulkanUtil
 		// 获取物理设备支持扩展
 		uint32_t DeviceExtensionsNum;
 		CheckVR(vkEnumerateDeviceExtensionProperties(PhysicalDevice, nullptr, &DeviceExtensionsNum, nullptr));
-		VkExtensionProperties DeviceExtensionProperties[DeviceExtensionsNum];
-		CheckVR(vkEnumerateDeviceExtensionProperties(PhysicalDevice, nullptr, &DeviceExtensionsNum, DeviceExtensionProperties));
+		std::vector<VkExtensionProperties> DeviceExtensionProperties(DeviceExtensionsNum);
+		CheckVR(vkEnumerateDeviceExtensionProperties(PhysicalDevice, nullptr, &DeviceExtensionsNum, &DeviceExtensionProperties[0]));
 	
 		std::cout << "当前选择物理设备支持扩展名:" << std::endl;
 		for(int i = 0; i < DeviceExtensionsNum; i++)
@@ -204,8 +206,8 @@ namespace VulkanUtil
 		// 获取物理设备可开启层
 		uint32_t DeviceLayersNum;
 		CheckVR(vkEnumerateDeviceLayerProperties(PhysicalDevice, &DeviceLayersNum, nullptr));
-		VkLayerProperties DeviceLayerProperties[DeviceLayersNum];
-		CheckVR(vkEnumerateDeviceLayerProperties(PhysicalDevice, &DeviceLayersNum, DeviceLayerProperties));
+		std::vector<VkLayerProperties> DeviceLayerProperties(DeviceLayersNum);
+		CheckVR(vkEnumerateDeviceLayerProperties(PhysicalDevice, &DeviceLayersNum, &DeviceLayerProperties[0]));
 	
 		std::cout << "当前物理设备可开启层名:" << std::endl;
 		for(int i = 0; i < DeviceLayersNum; i++)
@@ -236,8 +238,8 @@ namespace VulkanUtil
 	
 		uint32_t PDQueueFamilyPropertiesNum;
 		vkGetPhysicalDeviceQueueFamilyProperties(PhysicalDevice, &PDQueueFamilyPropertiesNum, nullptr);
-		VkQueueFamilyProperties PDQueueFamilyProperties[PDQueueFamilyPropertiesNum];
-		vkGetPhysicalDeviceQueueFamilyProperties(PhysicalDevice, &PDQueueFamilyPropertiesNum, PDQueueFamilyProperties);
+		std::vector<VkQueueFamilyProperties> PDQueueFamilyProperties(PDQueueFamilyPropertiesNum);
+		vkGetPhysicalDeviceQueueFamilyProperties(PhysicalDevice, &PDQueueFamilyPropertiesNum, &PDQueueFamilyProperties[0]);
 	
 		std::cout << "队列族数量:" << PDQueueFamilyPropertiesNum << std::endl;
 	
@@ -277,8 +279,8 @@ namespace VulkanUtil
 	{
 		uint32_t PDQueueFamilyPropertiesNum;
 		vkGetPhysicalDeviceQueueFamilyProperties(PhysicalDevice, &PDQueueFamilyPropertiesNum, nullptr);
-		VkQueueFamilyProperties PDQueueFamilyProperties[PDQueueFamilyPropertiesNum];
-		vkGetPhysicalDeviceQueueFamilyProperties(PhysicalDevice, &PDQueueFamilyPropertiesNum, PDQueueFamilyProperties);
+		std::vector<VkQueueFamilyProperties> PDQueueFamilyProperties(PDQueueFamilyPropertiesNum);
+		vkGetPhysicalDeviceQueueFamilyProperties(PhysicalDevice, &PDQueueFamilyPropertiesNum, &PDQueueFamilyProperties[0]);
 	
 		for(uint32_t i = 0; i < PDQueueFamilyPropertiesNum; i++)	
 		{
@@ -395,3 +397,4 @@ namespace VulkanUtil
 	}
 }
 
+#endif

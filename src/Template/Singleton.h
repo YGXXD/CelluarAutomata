@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SINGLETON_H
+#define SINGLETON_H
 
 template<class T>
 class Singleton
@@ -33,3 +34,5 @@ inline T& Singleton<T>::Get()
 	}
 	return *SingletonInstance;
 }
+
+#endif

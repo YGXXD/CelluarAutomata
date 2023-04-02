@@ -1,8 +1,10 @@
-#pragma once
+#ifndef RENDER_INTERFACE_H
+#define RENDER_INTERFACE_H
+
 #include <string>
 #include <vulkan/vulkan_core.h>
-#include "../Template/Delegate.h"
 #include "../Math/Vector3.h"
+#include "../Template/Delegate.h"
 
 struct RenderItem
 {
@@ -49,3 +51,5 @@ public:
 protected:
 	virtual ~IRenderWorld() { };
 };
+
+#endif

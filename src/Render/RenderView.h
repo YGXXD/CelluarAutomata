@@ -1,4 +1,6 @@
-#pragma once
+#ifndef RENDER_VIEW_H
+#define RENDER_VIEW_H
+
 #include <memory>
 #include <string>
 #include <vector>
@@ -70,3 +72,5 @@ private:
 	VkFence RenderFence = nullptr;
 
 };
+
+#endif

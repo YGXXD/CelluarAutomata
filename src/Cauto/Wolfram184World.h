@@ -1,4 +1,6 @@
-#pragma once
+#ifndef WOLFRAM_184_WORLD_H
+#define WOLFRAM_184_WORLD_H
+
 #include "../Core/World.h"
 #include <memory>
 #include <vector>
@@ -31,3 +33,5 @@ private:
 	std::vector<std::weak_ptr<Actor>> CellArray;
 
 };
+
+#endif

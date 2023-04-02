@@ -1,4 +1,6 @@
-#pragma once
+#ifndef LIFEGAME_3D_WORLD_H
+#define LIFEGAME_3D_WORLD_H
+
 #include "../Core/World.h"
 #include <vector>
 
@@ -43,3 +45,5 @@ private:
 	std::vector<std::vector<std::vector<uint8_t>>> CellSpace[2];
 	std::vector<std::vector<std::vector<std::weak_ptr<Actor>>>> CellArray;
 };
+
+#endif

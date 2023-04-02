@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MATRIX_4X4_H
+#define MATRIX_4X4_H
 
 class Matrix4X4
 {
@@ -37,3 +38,5 @@ public:
 	float m41, m42, m43, m44;
 
 };
+
+#endif

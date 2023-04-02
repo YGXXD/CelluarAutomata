@@ -1,11 +1,9 @@
-#pragma once
-#include "../Template/Delegate.h"
+#ifndef INPUT_SYSTEM_H
+#define INPUT_SYSTEM_H
+
 #include <SDL.h>
 #include <memory>
 #include <unordered_map>
-
-DECLARE_FUNCTION_DELEGATE_NO_PARAMETER(ActionInputDelegate, void);;
-DECLARE_FUNCTION_DELEGATE(AxisInputDelegate, void, float);
 
 enum class InputType : uint8_t 
 {
@@ -20,6 +18,11 @@ enum class InputState : uint8_t
 	InPressing,
 	MaxValue
 };
+
+#include "../Template/Delegate.h"
+
+DECLARE_FUNCTION_DELEGATE_NO_PARAMETER(ActionInputDelegate, void);;
+DECLARE_FUNCTION_DELEGATE(AxisInputDelegate, void, float);
 
 struct KeyInput
 {
@@ -113,3 +116,5 @@ private:
 	std::weak_ptr<Actor> ActorWeak;
 	std::unordered_map<uint8_t, KeyInput> KeyInputMap;
 };
+
+#endif

@@ -1,4 +1,6 @@
-#pragma once
+#ifndef PIPELINE_MANAGER_H
+#define PIPELINE_MANAGER_H
+
 #include <memory>
 #include <string>
 #include <vector>
@@ -55,3 +57,5 @@ private:
 
 
 };
+
+#endif

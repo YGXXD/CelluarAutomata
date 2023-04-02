@@ -1,4 +1,5 @@
-#pragma once
+#ifndef VECTOR_2_H
+#define VECTOR_2_H
 
 class Vector2
 {
@@ -44,3 +45,5 @@ public:
 	float y;
 
 };
+
+#endif

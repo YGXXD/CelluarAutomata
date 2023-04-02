@@ -1,4 +1,6 @@
-#pragma once
+#ifndef TIMER_H
+#define TIMER_H
+
 #include <SDL_timer.h>
 
 class Timer 
@@ -40,3 +42,5 @@ private:
 	uint64_t EndTick;
 	
 };
+
+#endif

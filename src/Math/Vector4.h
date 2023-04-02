@@ -1,4 +1,5 @@
-#pragma once
+#ifndef VECTOR_4_H
+#define VECTOR_4_H
 
 class Vector3;
 class Matrix4X4;
@@ -43,3 +44,5 @@ public:
 	float z;
 	float w;
 };
+
+#endif

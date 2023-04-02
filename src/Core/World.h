@@ -1,4 +1,6 @@
-#pragma once
+#ifndef WORLD_H
+#define WORLD_H
+
 #include <memory>
 #include <vector>
 #include <unordered_map>
@@ -70,3 +72,5 @@ std::weak_ptr<T> World::GetActorFromClass()
 
 	return std::weak_ptr<T>();
 }
+
+#endif

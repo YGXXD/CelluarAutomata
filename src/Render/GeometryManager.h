@@ -1,4 +1,6 @@
-#pragma once
+#ifndef GEOMETRY_MANAGER_H
+#define GEOMETRY_MANAGER_H
+
 #include "RenderUtil.h"
 #include <memory>
 #include <unordered_map>
@@ -31,3 +33,5 @@ private:
 	
 	std::unordered_map<std::string, std::unique_ptr<VkCustomGeometryData>> GeometryMap;
 };
+
+#endif

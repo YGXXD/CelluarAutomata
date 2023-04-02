@@ -1,5 +1,6 @@
-#pragma once
-#include "../Template/Singleton.h"
+#ifndef RENDER_CONTEXT_H
+#define RENDER_CONTEXT_H
+
 #include <memory>
 #include <vulkan/vulkan_core.h>
 #include <set>
@@ -17,6 +18,8 @@ struct VkCustomRenderFormat
 	VkColorSpaceKHR ImageColorSpace = VK_COLOR_SPACE_SRGB_NONLINEAR_KHR;
 	VkFormat DepthStencilFormat = VK_FORMAT_D32_SFLOAT_S8_UINT;
 };
+
+#include "../Template/Singleton.h"
 
 class RenderView;
 class CommandContext;
@@ -56,3 +59,5 @@ private:
 	void QueryPhysicalDeviceQueueIndex();
 	void CreateDevice();
 };
+
+#endif

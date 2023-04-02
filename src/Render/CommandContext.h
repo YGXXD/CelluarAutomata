@@ -1,4 +1,6 @@
-#pragma once
+#ifndef COMMAND_CONTEXT_H
+#define COMMAND_CONTEXT_H
+
 #include <unordered_map>
 #include <vulkan/vulkan_core.h>
 
@@ -54,3 +56,5 @@ private:
 	VkCommandBuffer ComputeCommandBuffer = nullptr;
 
 };
+
+#endif

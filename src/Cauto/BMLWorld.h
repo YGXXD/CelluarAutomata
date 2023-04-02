@@ -1,4 +1,6 @@
-#pragma once
+#ifndef BML_WORLD_H
+#define BML_WORLD_H
+
 #include "../Core/World.h"
 
 enum class EBMLDirection : uint8_t
@@ -46,3 +48,5 @@ private:
 	std::vector<std::vector<EBMLDirection>> CellSpace[2];
 	std::vector<std::vector<std::weak_ptr<Actor>>> CellArray;
 };
+
+#endif

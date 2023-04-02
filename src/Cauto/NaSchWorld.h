@@ -1,4 +1,6 @@
-#pragma once
+#ifndef NASCH_WORLD_H
+#define NASCH_WORLD_H
+
 #include "../Core/World.h"
 
 struct NaSchCellInfo
@@ -37,3 +39,5 @@ private:
 	std::vector<std::vector<NaSchCellInfo>> CellSpace[2];
 	std::vector<std::vector<std::weak_ptr<Actor>>> CellArray;
 };
+
+#endif
