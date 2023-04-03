@@ -291,7 +291,7 @@ void CommandContext::TransferCmdTransitionImageLayout(VkImage Image, VkFormat Fo
 	}
 	else 
 	{
-		throw "Transition Image Layout Failed";
+		throw std::string("Transition Image Layout Failed");
 	}
 
 	vkCmdPipelineBarrier(

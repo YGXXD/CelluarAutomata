@@ -30,8 +30,8 @@ void RenderContext::Init()
 	Pipeline = std::make_unique<PipelineManager>();
 
 	// Create Shader
-	CheckVR(Shader->CreateShader(ShaderType::VertexShader, "Box", "../shaders/Box.vert.spv"));
-	CheckVR(Shader->CreateShader(ShaderType::FragmentShader, "Box", "../shaders/Box.frag.spv"));
+	CheckVR(Shader->CreateShader(ShaderType::VertexShader, "Box", "/Users/chenqiudu/CmakeProj/VulkanDemo/shaders/Box.vert.spv"));
+	CheckVR(Shader->CreateShader(ShaderType::FragmentShader, "Box", "/Users/chenqiudu/CmakeProj/VulkanDemo/shaders/Box.frag.spv"));
 	
 	// Create Geometry
 	GeometryInfo Box = GeometryInfo::GetBoxData();		

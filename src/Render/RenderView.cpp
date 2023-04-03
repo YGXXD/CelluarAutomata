@@ -242,7 +242,7 @@ void RenderView::QuerySurfaceProperties()
 	VulkanUtil::QuerySupportedFormat(RenderContext::Get().PhysicalDevice, 1, &DisplayInfo.DepthStencilFormat, VK_IMAGE_TILING_OPTIMAL, VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT);
 
 	if(!IsSupportRenderFormat)
-		throw "Surface Not Support Curr RenderFormat";
+		throw std::string("Surface Not Support Curr RenderFormat");
 }
 
 VkResult RenderView::CreateSwapchain()

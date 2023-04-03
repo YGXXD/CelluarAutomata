@@ -5,6 +5,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <iostream>
 #include <vulkan/vulkan_core.h>
 #include "../Math/Vector3.h"
 #include "../Math/Vector4.h"
@@ -25,7 +26,7 @@
 			Error += SubStr;\
 			Error.push_back(' ');\
 		}\
-		throw Error.c_str();\
+		throw Error;\
 	}\
 }\
 
@@ -289,7 +290,7 @@ namespace VulkanUtil
 				return i;
 			}
 		}
-		throw "Not Find Physical Device's Queue Family";
+		throw std::string("Not Find Physical Device's Queue Family");
 	}
 
 	static uint32_t QueryMemoryTypeIndex(VkPhysicalDevice PhysicalDevice, uint32_t TypeFilter, VkMemoryPropertyFlags Flag)
@@ -305,7 +306,7 @@ namespace VulkanUtil
 			}
 		}
 	
-		throw "Not Find Physical Device's Memory";
+		throw std::string("Not Find Physical Device's Memory");
 	}
 
 	static VkFormat QuerySupportedFormat(VkPhysicalDevice PhysicalDevice, uint32_t FormatsNum, VkFormat* Formats, VkImageTiling ImageTiling, VkFormatFeatureFlags FormatFeatures) 
@@ -323,7 +324,7 @@ namespace VulkanUtil
         	    return Formats[i];
         	}
     }
-    throw "Not Find Supported Format";
+    throw std::string("Not Find Supported Format");
 }
 
 	static VkResult CreateBuffer(VkPhysicalDevice PhysicalDevice, VkDevice LogicDevice, VkDeviceSize Size, VkBufferUsageFlags BufferUsage, VkMemoryPropertyFlags MemoryProperty, VkBuffer* pBuffer, VkDeviceMemory* pMemory)

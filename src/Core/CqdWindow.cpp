@@ -12,7 +12,7 @@ CqdWindow::CqdWindow(uint32_t Width, uint32_t Height)
 	// 创建Window
 	Window = SDL_CreateWindow("Vulkan SDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, Width, Height, SDL_WINDOW_VULKAN);
 	if(!Window)
-		throw "Window Create Failed";
+		throw std::string("Window Create Failed");
 
 	// SDL_SetWindowFullscreen(Window, SDL_WINDOW_FULLSCREEN_DESKTOP);
 	// 获取SDL对Vulkan实例的扩展
