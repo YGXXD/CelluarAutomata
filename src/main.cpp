@@ -6,13 +6,14 @@
 #include "Cauto/NaSchWorld.h"
 #include "Cauto/Wolfram184World.h"
 #include "Cauto/BMLWorld.h"
+#include "Cauto/CrossRoadWorld.h"
 #include "Render/RenderUtil.h"
 
 int main()
 {
 	try 
 	{
-		Application::Get().Create<LifeGame2DWorld>();
+		Application::Get().Create<CrossRoadWorld>();
 
 		Application::Get().Run();
 

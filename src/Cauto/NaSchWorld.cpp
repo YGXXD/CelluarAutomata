@@ -96,6 +96,20 @@ void NaSchWorld::UpdateNaSchWorld()
 			LastCellSpace[i][j] = { };
 		}
 	}
+
+/*
+	int num = 0;
+	for(int i = 0; i < RoadWidth; ++i)
+	{
+		for(int j = 0; j < RoadLength; ++j)
+		{
+			if(CurrCellSpace[i][j].bHasCar)
+				num++;
+		}
+	}
+
+	std::cout << num << std::endl;
+*/
 }
 
 int NaSchWorld::GetEmptyFront(uint8_t CellSpaceIndex, int x, int y)

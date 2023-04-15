@@ -6,8 +6,6 @@
 enum class EBMLDirection : uint8_t
 {
 	Right,
-	Left,
-	Up,
 	Down,
 	Max // Max代表没车
 };
@@ -37,8 +35,6 @@ private:
 	std::unordered_map<uint8_t, Vector3> ColorMap = 
 	{
 		{static_cast<uint8_t>(EBMLDirection::Right), Vector3(1, 0, 0)},
-		{static_cast<uint8_t>(EBMLDirection::Left), Vector3(0, 1, 0)},
-		{static_cast<uint8_t>(EBMLDirection::Up), Vector3(0, 0, 1)},
 		{static_cast<uint8_t>(EBMLDirection::Down), Vector3(1, 1, 1)}
 	};
 

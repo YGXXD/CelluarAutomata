@@ -65,12 +65,6 @@ void BMLWorld::UpdateBMLWorld()
 		case EBMLDirection::Right:
 			V.first = 1;
 			break;
-		case EBMLDirection::Left:
-			V.first = -1;
-			break;
-		case EBMLDirection::Up:
-			V.second = 1;
-			break;
 		case EBMLDirection::Down:
 			V.second = -1;
 			break;

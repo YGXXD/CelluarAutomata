@@ -29,7 +29,7 @@ private:
 	float TickInterval = 0.1f;
 
     int RoadLength = 200;
-	int RoadWidth = 1;
+	int RoadWidth = 3;
 
 	float SlowDown = 0.3f; //慢随机化概率
 	int MaxSpeed = 3;
