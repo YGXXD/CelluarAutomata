@@ -11,10 +11,10 @@ void InputSystem::Update(float DeltaSeconds)
 	if(ActorWeak.expired())
 		return;
 
-	for(auto& InputInfo : KeyInputMap)
+	for(auto it = KeyInputMap.begin(); it != KeyInputMap.end(); ++it)
 	{
-		auto& Input = InputInfo.second;
-		Input.CurrState = KeyBoardState[InputInfo.first] ? InputState::InPressing : InputState::InReleasing;
+		auto& Input = it->second;
+		Input.CurrState = KeyBoardState[it->first] ? InputState::InPressing : InputState::InReleasing;
 		if(Input.CurrState != Input.LastState)
 		{
 			switch (Input.CurrState)
@@ -39,7 +39,12 @@ void InputSystem::Update(float DeltaSeconds)
 
 void InputSystem::PossessActor(std::weak_ptr<Actor> Actor)
 {
-	KeyInputMap.clear();
+	for(auto it = KeyInputMap.begin(); it != KeyInputMap.end(); ++it)
+	{
+		it->second.OnKeyDown.Clear();
+		it->second.OnKeyUp.Clear();
+		it->second.OnKeying.Clear();
+	}
 	ActorWeak = Actor;
 	if(!ActorWeak.expired())
 	{

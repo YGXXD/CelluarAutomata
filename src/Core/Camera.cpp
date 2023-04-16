@@ -1,7 +1,8 @@
 #include "Camera.h"
+#include <SDL_scancode.h>
 #include "../Math/MathLibrary.h"
 #include "InputSystem.h"
-#include <SDL_scancode.h>
+#include "Application.h"
 
 Camera::Camera() : Actor()
 {
@@ -55,8 +56,9 @@ void Camera::SetUpInput(InputSystem* MainInput)
 	MainInput->AxisBind(SDL_SCANCODE_S, this, &Camera::SubPitch);
 	MainInput->AxisBind(SDL_SCANCODE_A, this, &Camera::AddYaw);
 	MainInput->AxisBind(SDL_SCANCODE_D, this, &Camera::SubYaw);
-	MainInput->AxisBind(SDL_SCANCODE_I, this, &Camera::AddRadius);
-	MainInput->AxisBind(SDL_SCANCODE_K, this, &Camera::SubRadius);
+	MainInput->AxisBind(SDL_SCANCODE_Q, this, &Camera::AddRadius);
+	MainInput->AxisBind(SDL_SCANCODE_E, this, &Camera::SubRadius);
+	MainInput->ActionBind(SDL_SCANCODE_DOWN, InputType::OnPressed, &Application::Get(), &Application::EnterNextWorld);
 }
 
 void Camera::AddPitch(float DeltaSeconds)
