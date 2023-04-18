@@ -1,19 +1,11 @@
-#include <iostream>
 #include <unistd.h>
-#include <SDL.h>
 #include "Core/Application.h"
-#include "Cauto/LifeGame2DWorld.h"
-#include "Cauto/NaSchWorld.h"
-#include "Cauto/Wolfram184World.h"
-#include "Cauto/BMLWorld.h"
-#include "Cauto/CrossRoadWorld.h"
-#include "Render/RenderUtil.h"
 
 int main()
 {
 	try 
 	{
-		Application::Get().Create<CrossRoadWorld>();
+		Application::Get().Create();
 
 		Application::Get().Run();
 

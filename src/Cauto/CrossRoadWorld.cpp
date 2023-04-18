@@ -254,22 +254,27 @@ int CrossRoadWorld::GetEmptyFront(CrossRoadDirection Direction, int x, int y)
 {
 	int Speed = 1;
 
-	if(!IsInCross(x, y))
+	bool bInCross = IsInCross(x, y);
+	for(; Speed <= MaxSpeed; ++Speed)
 	{
-		for(; Speed <= MaxSpeed; ++Speed)
+		auto FinalPos = CalcPos({x, y}, Speed, Direction);
+
+		if(bInCross)
 		{
-			auto FinalPos = CalcPos({x, y}, Speed, Direction);
-	
+			if(GridSpace[FinalPos.first][FinalPos.second].bHasCell)
+			{
+				return --Speed;
+			}
+		}
+		else
+		{
 			if(GridSpace[FinalPos.first][FinalPos.second].bHasCell || (IsInCross(FinalPos.first, FinalPos.second) && !CanCross(Direction)))
 			{
 				return --Speed;
 			}
 		}
 	}
-	else
-	{
-		return 3;
-	}
+	
 	return MaxSpeed;	
 }
 

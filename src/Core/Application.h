@@ -2,6 +2,7 @@
 #define APPLICATION_H
 
 #include <memory>
+#include <unistd.h>
 #include "Timer.h"
 #include "World.h"
 #include "InputSystem.h"
@@ -59,7 +60,7 @@ public:
 
 		EnterNextWorld();
 	
-		AppTimer.Start();
+		AppTimer.Reset();
 	
 		while(!IsQuit)
 		{
@@ -70,9 +71,16 @@ public:
 				break;
 	
 			AppTimer.Tick();
-			MainInput->Update(AppTimer.GetDeltaSeconds());
-			MainWorld->Update(AppTimer.GetDeltaSeconds());
-			MainView->Render();
+			if(!AppTimer.IsPaused())
+			{
+				MainInput->Update(AppTimer.GetDeltaSeconds());
+				MainWorld->Update(AppTimer.GetDeltaSeconds());
+				MainView->Render();
+			}
+			else
+			{
+				sleep(100);
+			}
 		}
 
 	}

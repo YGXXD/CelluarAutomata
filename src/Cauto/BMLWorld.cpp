@@ -35,7 +35,7 @@ void BMLWorld::InitBMLWorld()
 		for(int j = 0; j < RoadHeight; j++)
 		{
 			// 初始化概率生成细胞
-			bool BirthProbability = (rand() % 8) == 0;
+			bool BirthProbability = (rand() % 3) == 0;
 			if(BirthProbability)
 			{
 				uint8_t Direction = rand() % static_cast<uint8_t>(EBMLDirection::Max);

@@ -65,16 +65,16 @@ private:
 	
 	float CurrSeconds = 0.f;
 	float TickInterval = 0.2f;
-	int RoadWidth = 120;
-	int RoadHeight = 80;
+	int RoadWidth = 200;
+	int RoadHeight = 120;
 
 	// 车的属性
 	int MaxSpeed = 5;
 	float SlowDown = 0.2f;
 
 	// 交通灯时间
-	int GreenTime = 18;
-	int DelayTime = 5;
+	int GreenTime = 38;
+	int DelayTime = 7;
 	int CurrTime = 0;
 	
 	// 十字路口的范围

@@ -29,8 +29,8 @@ private:
 	float TickInterval = 0.1f;
 
 	// 地图宽高
-	int RoadWidth = 80;
-	int RoadHeight = 80;
+	int RoadWidth = 120;
+	int RoadHeight = 120;
 
 	std::unordered_map<uint8_t, Vector3> ColorMap = 
 	{
