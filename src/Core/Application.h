@@ -18,6 +18,7 @@
 #include "../Cauto/Wolfram184World.h"
 #include "../Cauto/BMLWorld.h"
 #include "../Cauto/CrossRoadWorld.h"
+#include "../Cauto/TrafficLightWorld.h"
 
 class Application : public Singleton<Application>
 {
@@ -92,7 +93,7 @@ public:
 
 	void EnterNextWorld()
 	{
-		WorldIdx = (WorldIdx + 1) % 6;
+		WorldIdx = (WorldIdx + 1) % 7;
 
 		switch (WorldIdx)
 	   	{
@@ -113,6 +114,9 @@ public:
 				break;
 			case 5:
 				CreateWorld<CrossRoadWorld>();
+				break;
+			case 6:
+				CreateWorld<TrafficLightWorld>();
 				break;
 			default:
 				return;
