@@ -21,9 +21,9 @@ void TrafficLightWorld::WorldUpdate(float DeltaSeconds)
 void TrafficLightWorld::InitTrafficLightWorld()
 {
 	if(RoadWidth < 20)
-		RoadWidth = 16;
+		RoadWidth = 20;
 	if(RoadHeight < 20)
-		RoadHeight = 16;
+		RoadHeight = 20;
 
 	GridSpace = std::vector<std::vector<TrafficLightGrid>>(RoadWidth, std::vector<TrafficLightGrid>(RoadHeight, {false, TrafficLightGridType::Max, TrafficLightDirection::Max}));
 	//CellArray = std::vector<std::vector<std::weak_ptr<Actor>>>(RoadWidth, std::vector<std::weak_ptr<Actor>>(RoadHeight));
@@ -281,7 +281,7 @@ int TrafficLightWorld::GetEmptyFront(TrafficLightDirection Direction, int x, int
 int TrafficLightWorld::CalcSpeed(int CurrSpeed, int EmptyOfFront)
 {
 	int CarSpeed = CurrSpeed;
-	CarSpeed = Math::Max(CarSpeed + 1, MaxSpeed); //加速
+	CarSpeed = Math::Min(CarSpeed + 1, MaxSpeed); //加速
 	CarSpeed = Math::Min(CarSpeed, EmptyOfFront); //减速
 	if((rand() % 1024) / 1024.f < SlowDown)
 		CarSpeed = Math::Max(CarSpeed - 1, 0); //慢随机化

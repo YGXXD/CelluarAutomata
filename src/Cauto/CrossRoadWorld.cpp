@@ -22,9 +22,9 @@ void CrossRoadWorld::WorldUpdate(float DeltaSeconds)
 void CrossRoadWorld::InitCrossRoadWorld()
 {
 	if(RoadWidth < 20)
-		RoadWidth = 16;
+		RoadWidth = 20;
 	if(RoadHeight < 20)
-		RoadHeight = 16;
+		RoadHeight = 20;
 
 	CellSpace = std::vector<std::vector<CrossRoadCellInfo>>(RoadWidth, std::vector<CrossRoadCellInfo>(RoadHeight, {0, 0, 0, 0}));
 	//CellArray = std::vector<std::vector<std::weak_ptr<Actor>>>(RoadWidth, std::vector<std::weak_ptr<Actor>>(RoadHeight));

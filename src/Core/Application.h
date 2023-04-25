@@ -19,6 +19,7 @@
 #include "../Cauto/BMLWorld.h"
 #include "../Cauto/CrossRoadWorld.h"
 #include "../Cauto/TrafficLightWorld.h"
+#include "../Cauto/RoadInstWorld.h"
 
 class Application : public Singleton<Application>
 {
@@ -98,7 +99,7 @@ public:
 		switch (WorldIdx)
 	   	{
 			case 0:
-				CreateWorld<LifeGame2DWorld>();
+				CreateWorld<RoadInstWorld>();
 				break;
 			case 1:
 				CreateWorld<LifeGame3DWorld>();

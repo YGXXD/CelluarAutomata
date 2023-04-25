@@ -65,7 +65,7 @@ void NaSchWorld::UpdateNaSchWorld()
 			if(LastCellSpace[i][j].bHasCar)
 			{
 				int CarSpeed = LastCellSpace[i][j].Speed;
-				CarSpeed = Math::Max(CarSpeed + 1, MaxSpeed); //加速
+				CarSpeed = Math::Min(CarSpeed + 1, MaxSpeed); //加速
 				CarSpeed = Math::Min(CarSpeed, GetEmptyFront(LastCellSpaceIndex, i, j)); //减速
 				if((rand() % 1024) / 1024.f < SlowDown)
 					CarSpeed = Math::Max(CarSpeed - 1, 0); //慢随机化
