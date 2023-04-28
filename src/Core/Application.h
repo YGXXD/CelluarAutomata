@@ -94,12 +94,12 @@ public:
 
 	void EnterNextWorld()
 	{
-		WorldIdx = (WorldIdx + 1) % 7;
+		WorldIdx = (WorldIdx + 1) % 8;
 
 		switch (WorldIdx)
 	   	{
 			case 0:
-				CreateWorld<RoadInstWorld>();
+				CreateWorld<LifeGame2DWorld>();
 				break;
 			case 1:
 				CreateWorld<LifeGame3DWorld>();
@@ -118,6 +118,9 @@ public:
 				break;
 			case 6:
 				CreateWorld<TrafficLightWorld>();
+				break;
+			case 7:
+				CreateWorld<RoadInstWorld>();
 				break;
 			default:
 				return;
