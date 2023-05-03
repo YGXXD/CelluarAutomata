@@ -1,10 +1,12 @@
 #include "Wolfram184World.h"
 #include "../Core/Actor.h"
 #include <string>
+#include "CACamera.h"
 
 void Wolfram184World::BeginCreate()
 {
 	World::BeginCreate();
+	SpawnActor<CACamera>("CACamera");
 	WolframInit();
 }
 

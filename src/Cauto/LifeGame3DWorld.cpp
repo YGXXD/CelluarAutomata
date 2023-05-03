@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <iostream>
 #include "../Math/MathLibrary.h"
+#include "CACamera.h"
 
 LifeGame3DWorld::LifeGame3DWorld() : World()
 {
@@ -16,6 +17,7 @@ LifeGame3DWorld::~LifeGame3DWorld()
 void LifeGame3DWorld::BeginCreate()
 {
 	World::BeginCreate();
+	SpawnActor<CACamera>("CACamera");
 	GameOfLifeInit();		
 }
 

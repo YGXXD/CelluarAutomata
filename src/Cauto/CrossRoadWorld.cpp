@@ -1,10 +1,11 @@
 #include "CrossRoadWorld.h"
 #include <memory>
+#include "CACamera.h"
 
 void CrossRoadWorld::BeginCreate()
 {
 	World::BeginCreate();
-	
+	SpawnActor<CACamera>("CACamera");
 	InitCrossRoadWorld();
 }
 

@@ -1,9 +1,11 @@
 #include "TrafficLightWorld.h"
 #include "../Math/MathLibrary.h"
+#include "CACamera.h"
 
 void TrafficLightWorld::BeginCreate()
 {
 	World::BeginCreate();
+	SpawnActor<CACamera>("CACamera");	
 	InitTrafficLightWorld();
 }
 

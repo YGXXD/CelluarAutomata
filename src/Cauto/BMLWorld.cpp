@@ -1,9 +1,11 @@
 #include "BMLWorld.h"
 #include <iostream>
+#include "CACamera.h"
 
 void BMLWorld::BeginCreate()
 {
 	World::BeginCreate();
+	SpawnActor<CACamera>("CACamera");
 	InitBMLWorld();	
 }
 

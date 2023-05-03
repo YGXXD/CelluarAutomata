@@ -1,11 +1,12 @@
 #include "RoadInstWorld.h"
 #include <memory>
 #include <iostream>
+#include "CACamera.h"
 
 void RoadInstWorld::BeginCreate()
 {
 	World::BeginCreate();
-	
+	SpawnActor<CACamera>("CACamera");
 	InitRoadInstWorld();
 }
 

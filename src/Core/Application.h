@@ -13,13 +13,6 @@
 #include "../Render/RenderUtil.h"
 #include "../Template/Singleton.h"
 #include "../Cauto/LifeGame2DWorld.h"
-#include "../Cauto/LifeGame3DWorld.h"
-#include "../Cauto/NaSchWorld.h"
-#include "../Cauto/Wolfram184World.h"
-#include "../Cauto/BMLWorld.h"
-#include "../Cauto/CrossRoadWorld.h"
-#include "../Cauto/TrafficLightWorld.h"
-#include "../Cauto/RoadInstWorld.h"
 
 class Application : public Singleton<Application>
 {
@@ -35,7 +28,6 @@ public:
 		MainView = std::make_shared<RenderView>(MainWindow);
 		MainInput = std::make_shared<InputSystem>();
 	
-		WorldIdx = -1;
 		IsQuit = false;
 	}
 
@@ -60,7 +52,7 @@ public:
 
 		MainWindow->Show();
 
-		EnterNextWorld();
+		CreateWorld<LifeGame2DWorld>();
 	
 		AppTimer.Reset();
 	
@@ -92,41 +84,6 @@ public:
 		IsQuit = true;
 	}
 
-	void EnterNextWorld()
-	{
-		WorldIdx = (WorldIdx + 1) % 8;
-
-		switch (WorldIdx)
-	   	{
-			case 0:
-				CreateWorld<LifeGame2DWorld>();
-				break;
-			case 1:
-				CreateWorld<LifeGame3DWorld>();
-				break;
-			case 2:
-				CreateWorld<Wolfram184World>();
-				break;
-			case 3:
-				CreateWorld<NaSchWorld>();
-				break;
-			case 4:
-				CreateWorld<BMLWorld>();
-				break;
-			case 5:
-				CreateWorld<CrossRoadWorld>();
-				break;
-			case 6:
-				CreateWorld<TrafficLightWorld>();
-				break;
-			case 7:
-				CreateWorld<RoadInstWorld>();
-				break;
-			default:
-				return;
-		}
-	}
-
 	template<class WorldT = World>
 	void CreateWorld()
 	{
@@ -156,8 +113,6 @@ private:
 	std::shared_ptr<RenderView> MainView;
 	std::shared_ptr<World> MainWorld;
 	std::shared_ptr<InputSystem> MainInput;
-
-	int WorldIdx;
 };
 
 #endif

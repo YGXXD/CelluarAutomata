@@ -1,5 +1,6 @@
 #include "LifeGame2DWorld.h"
 #include <algorithm>
+#include "CACamera.h"
 
 LifeGame2DWorld::LifeGame2DWorld() : World()
 {
@@ -14,6 +15,7 @@ LifeGame2DWorld::~LifeGame2DWorld()
 void LifeGame2DWorld::BeginCreate()
 {
 	World::BeginCreate();
+	SpawnActor<CACamera>("CACamera");
 	GameOfLifeInit();		
 }
 

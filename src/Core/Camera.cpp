@@ -58,7 +58,6 @@ void Camera::SetUpInput(InputSystem* MainInput)
 	MainInput->AxisBind(SDL_SCANCODE_D, this, &Camera::SubYaw);
 	MainInput->AxisBind(SDL_SCANCODE_Q, this, &Camera::AddRadius);
 	MainInput->AxisBind(SDL_SCANCODE_E, this, &Camera::SubRadius);
-	MainInput->ActionBind(SDL_SCANCODE_DOWN, InputType::OnPressed, &Application::Get(), &Application::EnterNextWorld);
 }
 
 void Camera::AddPitch(float DeltaSeconds)

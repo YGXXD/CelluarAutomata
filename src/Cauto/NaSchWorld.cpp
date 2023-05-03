@@ -1,10 +1,12 @@
 #include "NaSchWorld.h"
 #include "../Math/MathLibrary.h"
 #include <iostream>
+#include "CACamera.h"
 
 void NaSchWorld::BeginCreate()
 {
 	World::BeginCreate();
+	SpawnActor<CACamera>("CACamera");
 	InitNaSchWorld();	
 }
 
