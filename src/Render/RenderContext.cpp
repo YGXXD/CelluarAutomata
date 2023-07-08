@@ -4,9 +4,6 @@
 #include "CommandContext.h"
 #include "ShaderManager.h"
 #include "PipelineManager.h"
-#include <memory>
-#include <vector>
-#include <vulkan/vulkan_core.h>
 
 RenderContext::RenderContext()
 {
