@@ -53,6 +53,25 @@ float Math::InvSqrt(float a)
 	return x;
 }
 
+double Math::InvSqrt(double a)
+{
+	uint64_t i;
+	double x = a;
+	
+	//将浮点数转化为32位整数
+	i = *(uint64_t*)&x;
+	//取出IEEE754指数和尾数,原算法u的值为0.0450465
+	i = 0x5fe6eb3bfb58d152 - (i >> 1);
+	//求出平方根倒数近似解
+	x = *(double*)&i; 
+	
+	//用牛顿迭代法进行迭代增加精度
+	x = x * (1.5 - (0.5 * a * x * x));
+	//x = x * (1.5 - (0.5 * a * x * x));
+
+	return x;
+}
+
 Vector2 Math::Normalize(Vector2& V)
 {
 	return InvSqrt(V.x * V.x + V.y * V.y) * V; 

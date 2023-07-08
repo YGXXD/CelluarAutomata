@@ -15,6 +15,7 @@ namespace Math
 	float Tan(float Rad);
 	
 	float InvSqrt(float a);
+	double InvSqrt(double a);
 
 	template<typename T>
 	inline int Round(T a);
