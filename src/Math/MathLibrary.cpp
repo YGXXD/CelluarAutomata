@@ -292,7 +292,7 @@ Matrix4X4 Math::MatrixPerspectiveFov(float FovAngle, float AspectRatio, float Ne
 				(1 / (AspectRatio * HalfAngleTan), 0, 0, 0,
 				 0, 1 / HalfAngleTan, 0, 0,
 				 0, 0, FarZ / (FarZ - NearZ), 1,
-				 0, 0, (- NearZ * FarZ) / FarZ - NearZ, 0);
+				 0, 0, (- NearZ * FarZ) / (FarZ - NearZ), 0);
 }
 
 Matrix4X4 Math::MatrixTransition(Vector3& V)
