@@ -25,10 +25,11 @@ void RenderContext::Init()
 	Shader = std::make_unique<ShaderManager>();
 	Geometry = std::make_unique<GeometryManager>();
 	Pipeline = std::make_unique<PipelineManager>();
-
+	
 	// Create Shader
-	CheckVR(Shader->CreateShader(ShaderType::VertexShader, "Box", "/Users/chenqiudu/CppProject/VulkanDemo/shaders/Box.vert.spv"));
-	CheckVR(Shader->CreateShader(ShaderType::FragmentShader, "Box", "/Users/chenqiudu/CppProject/VulkanDemo/shaders/Box.frag.spv"));
+	std::string ShaderPath = SHADER_PATH;
+	CheckVR(Shader->CreateShader(ShaderType::VertexShader, "Box", ShaderPath + "Box.vert.spv"));
+	CheckVR(Shader->CreateShader(ShaderType::FragmentShader, "Box", ShaderPath + "Box.frag.spv"));
 	
 	// Create Geometry
 	GeometryInfo Box = GeometryInfo::GetBoxData();		
@@ -51,16 +52,20 @@ void RenderContext::CreateInstance()
 	InstanceExtensionNames.push_back("VK_KHR_get_physical_device_properties2");
 	InstanceExtensionNames.push_back("VK_KHR_surface");
 #if defined (__APPLE__)
+	InstanceExtensionNames.push_back("VK_KHR_portability_enumeration"); 
 	InstanceExtensionNames.push_back("VK_MVK_macos_surface");
+    InstanceExtensionNames.push_back("VK_EXT_metal_surface");
 #endif
 	InstanceLayerNames.push_back("VK_LAYER_KHRONOS_validation");
 
 	// 创建Vulkan实例
 	VkApplicationInfo AppInfo = { };
 	AppInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
+	AppInfo.apiVersion = VK_API_VERSION_1_2;
 	AppInfo.pApplicationName = "VulkanDemo";
-	AppInfo.applicationVersion = 1;
-	AppInfo.apiVersion = VK_MAKE_VERSION(1, 0, 0);
+	AppInfo.applicationVersion = VK_MAKE_VERSION(1, 0, 0);
+	AppInfo.pEngineName = "VulkanDemo";
+	AppInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
 	
 	VkInstanceCreateInfo InstCreateInfo = { };
 	InstCreateInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;	
@@ -69,6 +74,7 @@ void RenderContext::CreateInstance()
 	InstCreateInfo.ppEnabledExtensionNames = InstanceExtensionNames.data();
 	InstCreateInfo.enabledLayerCount = InstanceLayerNames.size();
 	InstCreateInfo.ppEnabledLayerNames = InstanceLayerNames.data();
+	InstCreateInfo.flags = VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR;
 
 	CheckVR(vkCreateInstance(&InstCreateInfo, nullptr, &Instance));		
 	
