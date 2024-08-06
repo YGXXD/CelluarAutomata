@@ -41,6 +41,11 @@ void Actor::SetName(std::string NewName)
 	}
 }
 
+void Actor::SetIsUpdate(bool IsUpdate)
+{
+	bIsUpdate = IsUpdate;
+}
+
 void Actor::SetRenderColor(Vector3 NewColor)
 {
 	RenderColor = NewColor;

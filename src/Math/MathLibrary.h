@@ -52,6 +52,9 @@ namespace Math
 	Matrix4X4 MatrixPerspectiveFov(float FovAngle, float AspectRatio, float NearZ, float FarZ);
 	Matrix4X4 MatrixTransition(Vector3& V); //平移矩阵
 	Matrix4X4 MatrixScale(Vector3& V); //缩放矩阵
+
+	float RandFloat();
+	Vector3 RandBoxVector(float Width, float Height, float Deep);
 }
 
 template<typename T>

@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include "Core/Application.h"
+#include "Birth/BirthWorld.h"
 
 int main()
 {
@@ -7,7 +8,7 @@ int main()
 	{
 		Application::Get().Create();
 
-		Application::Get().Run();
+		Application::Get().Run<BirthWorld>();
 
 		Application::Get().Destroy();
 		return 0;

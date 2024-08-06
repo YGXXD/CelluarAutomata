@@ -312,3 +312,16 @@ Matrix4X4 Math::MatrixScale(Vector3& V)
 				 0, 0, V.z, 0,
 				 0, 0, 0, 1);	
 }
+
+
+float Math::RandFloat()
+{
+	return (float)rand() / (float)RAND_MAX;
+}
+
+Vector3 Math::RandBoxVector(float Width, float Height, float Deep)
+{
+	return Vector3(Linear(-1.f, 1.f, RandFloat()) * Width, 
+				   Linear(-1.f, 1.f, RandFloat()) * Height, 
+				   Linear(-1.f, 1.f, RandFloat()) * Deep);
+}

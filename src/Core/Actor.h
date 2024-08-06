@@ -17,6 +17,7 @@ public:
 	World* GetWorld();
 	std::string GetName() const;
 	void SetName(std::string NewName);
+	void SetIsUpdate(bool IsUpdate);
 	void SetRenderColor(Vector3 NewColor);
 
 	bool IsUpdate() const;

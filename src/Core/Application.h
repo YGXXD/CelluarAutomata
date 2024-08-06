@@ -12,7 +12,6 @@
 #include "../Render/RenderView.h"
 #include "../Render/RenderUtil.h"
 #include "../Template/Singleton.h"
-#include "../Cauto/LifeGame2DWorld.h"
 
 class Application : public Singleton<Application>
 {
@@ -45,6 +44,7 @@ public:
 		SDL_Quit();
 	}
 
+	template<class WorldClass>
 	void Run()
 	{
 		if(!MainWindow.get() || !MainView.get())
@@ -52,7 +52,7 @@ public:
 
 		MainWindow->Show();
 
-		CreateWorld<LifeGame2DWorld>();
+		CreateWorld<WorldClass>();
 	
 		AppTimer.Reset();
 	
@@ -67,6 +67,7 @@ public:
 			AppTimer.Tick();
 			if(!AppTimer.IsPaused())
 			{
+				// std::cout << 1.f / AppTimer.GetDeltaSeconds() << std::endl;
 				MainInput->Update(AppTimer.GetDeltaSeconds());
 				MainWorld->Update(AppTimer.GetDeltaSeconds());
 				MainView->Render();

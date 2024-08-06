@@ -3,12 +3,6 @@ find_program(GLSLC_PROGRAM glslc REQUIRED)
 set(SHADER_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 set(SHADER_OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR})
 
-if(EXISTS ${SHADER_OUTPUT_DIR})
-	message("Shader Output Directroy Already Exists")
-else()
-	message("Create Shader Output Directroy")
-endif()
-
 file(GLOB SHADER_SOURCE_FILES ${SHADER_SOURCE_DIR}/*.vert ${SHADER_SOURCE_DIR}/*.frag)
 
 foreach(SHADER IN LISTS SHADER_SOURCE_FILES) 
@@ -19,7 +13,7 @@ foreach(SHADER IN LISTS SHADER_SOURCE_FILES)
 		DEPENDS ${SHADER}
 		COMMENT "Compling ${FILENAME}")
 		list(APPEND SPV_SHADERS ${SHADER_OUTPUT_DIR}/${FILENAME}.spv)
-endforeach(SHADER IN LISTS SOURCE_SHADER_FILES)
+endforeach(SHADER IN LISTS SHADER_SOURCE_FILES)
 
 add_custom_target(shaders ALL DEPENDS ${SPV_SHADERS})
 add_dependencies(${PROJECT_NAME} shaders)

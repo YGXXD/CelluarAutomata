@@ -6,3 +6,4 @@ project(VisualCell)
 
 add_subdirectory(./src)
 add_subdirectory(./shaders)
+add_subdirectory(./images)
