@@ -3,18 +3,53 @@
 
 BirthActor::BirthActor() : Actor()
 {
-    TimeInterval = 0.f;
+    LocationTimeInterval = 0.f;
+    ColorTimeInterval = 1.f;
 }
 
 void BirthActor::Update(float DeltaSeconds)
 {
-    if (TimeInterval < 10.f)
+    if (LocationTimeInterval <= 9.f)
     {
-        TimeInterval += DeltaSeconds;
-        SetActorLocation(Math::Linear(StartLocation, MoveToLocation, TimeInterval * 0.1f));
+        LocationTimeInterval += DeltaSeconds;
+        SetActorLocation(Math::Linear(StartLocation, MoveToLocation, LocationTimeInterval / 9.f));
+        
+        if (ColorTimeInterval == 0.f)
+        {
+            ColorTimeInterval = 0.f; 
+            StartColor = GetRenderColor();
+            LerpToColor = Vector3(Math::Linear(0.5f, 1.f, Math::RandFloat()), 
+                                  Math::Linear(0.5f, 1.f, Math::RandFloat()), 
+                                  Math::Linear(0.5f, 1.f, Math::RandFloat()));
+        }
+
+        ColorTimeInterval += DeltaSeconds;
+        if (ColorTimeInterval <= 1.f && LocationTimeInterval <= 9.f)
+        {
+            SetRenderColor(Math::Linear(StartColor, LerpToColor, ColorTimeInterval));
+        }
+        else
+        {
+            ColorTimeInterval = 0.f;
+        }
     }
     else
     {
-        bIsUpdate = false;
+        if (ColorTimeInterval == 0.f)
+        {
+            ColorTimeInterval = 0.f; 
+            StartColor = GetRenderColor();
+            LerpToColor = Vector3(1.f, 1.f, 1.f);
+        }
+
+        ColorTimeInterval += DeltaSeconds;
+        if (ColorTimeInterval <= 1.f)
+        {
+            SetRenderColor(Math::Linear(StartColor, LerpToColor, ColorTimeInterval));
+        }
+        else
+        {
+            bIsUpdate = false;
+        }
     }
 }

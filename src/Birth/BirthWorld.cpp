@@ -27,14 +27,17 @@ void BirthWorld::BeginCreate()
 void BirthWorld::WorldUpdate(float DeltaSeconds)
 {
 	World::WorldUpdate(DeltaSeconds);
-	CurrSeconds += DeltaSeconds;
-	if(CurrSeconds >= TickInterval)
+	StartTime = StartTime >= 0.f ? StartTime - DeltaSeconds : StartTime;
+	if (StartTime < 0.f)
 	{
-		// GameOfLifeUpdate();
-		TickInterval = Math::Clamp(0.02f, TickInterval, TickInterval * 0.5f);
-		CurrSeconds = 0.f;
+		CurrSeconds += DeltaSeconds;
+		if(CurrSeconds >= TickInterval)
+		{
+			GameOfLifeUpdate();
+			// TickInterval = Math::Clamp(0.05f, TickInterval, TickInterval * 0.85f);
+			CurrSeconds = 0.f;
+		}
 	}
-	
 }
 
 void BirthWorld::BeginDestroy()

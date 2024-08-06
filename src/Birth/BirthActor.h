@@ -9,7 +9,10 @@ public:
     BirthActor();
     virtual void Update(float DeltaSeconds) override;
 
-    float TimeInterval;
+    float LocationTimeInterval;
+    float ColorTimeInterval;
+    Vector3 StartColor;
+    Vector3 LerpToColor;
     Vector3 StartLocation;
     Vector3 MoveToLocation;
 };
