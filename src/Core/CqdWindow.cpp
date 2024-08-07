@@ -10,7 +10,7 @@ CqdWindow::CqdWindow(uint32_t Width, uint32_t Height)
 	WindowHeight = Height;
 
 	// 创建Window
-	Window = SDL_CreateWindow("Vulkan SDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, Width, Height, SDL_WINDOW_VULKAN);
+	Window = SDL_CreateWindow("有个小小杜", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, Width, Height, SDL_WINDOW_VULKAN);
 	if(!Window)
 		throw std::string("Window Create Failed");
 

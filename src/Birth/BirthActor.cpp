@@ -39,7 +39,7 @@ void BirthActor::Update(float DeltaSeconds)
         {
             ColorTimeInterval = 0.f; 
             StartColor = GetRenderColor();
-            LerpToColor = Vector3(1.f, 1.f, 1.f);
+            LerpToColor = FinalColor;
         }
 
         ColorTimeInterval += DeltaSeconds;

@@ -15,6 +15,7 @@ public:
     Vector3 LerpToColor;
     Vector3 StartLocation;
     Vector3 MoveToLocation;
+    Vector3 FinalColor;
 };
 
 #endif

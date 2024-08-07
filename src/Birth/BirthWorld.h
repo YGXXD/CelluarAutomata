@@ -23,7 +23,7 @@ private:
 	float StartTime = 12.f;
 	float CurrSeconds = 0.f;
 	float TickInterval = 0.05f;
-	int SpaceWidth = 200;
+	int SpaceWidth = 100;
 	int SpaceHeight = 100;
 
 	// 摩尔邻域

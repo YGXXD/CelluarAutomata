@@ -49,7 +49,7 @@ void BirthWorld::GameOfLifeInit()
 {
 	const std::string ImagePath = IMAGE_PATH;
     int ImageWidth, ImageHeight, Channels;
-    unsigned char* data = stbi_load((ImagePath + "number.png").c_str(), &ImageWidth, &ImageHeight, &Channels, 0);
+    unsigned char* data = stbi_load((ImagePath + "ktr.png").c_str(), &ImageWidth, &ImageHeight, &Channels, 0);
 	if (data == nullptr)
 		std::cout << "数字加载失败" << std::endl;
 
@@ -75,9 +75,10 @@ void BirthWorld::GameOfLifeInit()
 
 			int ImageX = static_cast<int>(U * ImageWidth);
 			int ImageY = static_cast<int>(V * ImageHeight);
-			uint8_t Color = data[Channels * (ImageX + ImageY * ImageWidth)];
+			int ColorIndex = Channels * (ImageX + ImageY * ImageWidth);
+			uint8_t Color = data[ColorIndex + 3];
 
-			bool BirthProbability = Color < 250;
+			bool BirthProbability = Color > 0;
 			if(BirthProbability)
 			{
 				CellSpace[CurrCellSpaceIndex][i][j] = true;
@@ -87,6 +88,8 @@ void BirthWorld::GameOfLifeInit()
 				CellArray[i][j].lock()->StartLocation = Location;
 				CellArray[i][j].lock()->MoveToLocation = Vector3(0, XStart + i, YStart + j);
 				CellArray[i][j].lock()->SetRenderColor(CellColor);
+				CellArray[i][j].lock()->FinalColor = Vector3((float)(data[ColorIndex]) / (float)0xff, (float)(data[ColorIndex + 1]) / (float)0xff, (float)(data[ColorIndex + 2]) / (float)0xff);
+				// CellArray[i][j].lock()->FinalColor = CellColor;	
 				CellArray[i][j].lock()->SetIsUpdate(true);
 			}
 		}
