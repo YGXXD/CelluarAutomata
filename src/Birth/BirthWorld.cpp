@@ -4,8 +4,7 @@
 #include <algorithm>
 #include <iostream>
 
-#define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h"
+#include "../ThirdParty/stb_image.h"
 
 BirthWorld::BirthWorld() : World()
 {
@@ -82,9 +81,10 @@ void BirthWorld::GameOfLifeInit()
 			if(BirthProbability)
 			{
 				CellSpace[CurrCellSpaceIndex][i][j] = true;
-				std::string Name = std::to_string(i) + "," + std::to_string(j);
+				std::string Name = ImagePath + std::to_string(i) + "," + std::to_string(j);
 				Vector3 Location = Math::RandBoxVector(0, SpaceWidth * 0.5f, SpaceHeight * 0.5f);
 				CellArray[i][j] = SpawnActor<BirthActor>(Name, Location);
+				CellArray[i][j].lock()->TimeLineScalar = 5.f;
 				CellArray[i][j].lock()->StartLocation = Location;
 				CellArray[i][j].lock()->MoveToLocation = Vector3(0, XStart + i, YStart + j);
 				CellArray[i][j].lock()->SetRenderColor(CellColor);

@@ -1,9 +1,9 @@
-#ifndef BIRTH_CAMERA_H
-#define BIRTH_CAMERA_H
+#ifndef BIRTH_2025_CAMERA_H
+#define BIRTH_2025_CAMERA_H
 
 #include "../Core/Camera.h"
 
-class BirthCamera : public Camera
+class Birth2025Camera : public Camera
 {
 private:
 	void EnterNextWorld();

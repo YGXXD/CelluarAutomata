@@ -3,16 +3,17 @@
 
 BirthActor::BirthActor() : Actor()
 {
+    TimeLineScalar = 5.f;
     LocationTimeInterval = 0.f;
     ColorTimeInterval = 1.f;
 }
 
 void BirthActor::Update(float DeltaSeconds)
 {
-    if (LocationTimeInterval <= 9.f)
+    if (LocationTimeInterval <= TimeLineScalar)
     {
         LocationTimeInterval += DeltaSeconds;
-        SetActorLocation(Math::Linear(StartLocation, MoveToLocation, LocationTimeInterval / 9.f));
+        SetActorLocation(Math::Linear(StartLocation, MoveToLocation, LocationTimeInterval / TimeLineScalar));
         
         if (ColorTimeInterval == 0.f)
         {
@@ -24,7 +25,7 @@ void BirthActor::Update(float DeltaSeconds)
         }
 
         ColorTimeInterval += DeltaSeconds;
-        if (ColorTimeInterval <= 1.f && LocationTimeInterval <= 9.f)
+        if (ColorTimeInterval <= 1.f && LocationTimeInterval <= TimeLineScalar)
         {
             SetRenderColor(Math::Linear(StartColor, LerpToColor, ColorTimeInterval));
         }

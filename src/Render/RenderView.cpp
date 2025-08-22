@@ -101,10 +101,9 @@ void RenderView::Render()
 	Cmd->GraphicsCmdEnd();
 	Cmd->SubmitGraphicsCommand(RenderFence);
 
+    VR = vkWaitForFences(LogicDevice, 1, &RenderFence, VK_TRUE, 0xffffffff);
 	// 呈现
 	Cmd->GraphicsQueuePresent(&SwapchainKHR, &CurrRenderImageIndex);
-
-    VR = vkWaitForFences(LogicDevice, 1, &RenderFence, VK_TRUE, 0xffffffff);
 	if(VR != VK_SUCCESS)
 	{
 		std::cout << "Wait Fence Faild!" << std::endl;

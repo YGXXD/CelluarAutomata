@@ -7,6 +7,8 @@ aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/Render/. CPP_SOURCE_FILES)
 aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/Core/. CPP_SOURCE_FILES)
 aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/Cauto/. CPP_SOURCE_FILES)
 aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/Birth/. CPP_SOURCE_FILES)
+aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/Birth2025/. CPP_SOURCE_FILES)
+aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty/. CPP_SOURCE_FILES)
 
 add_executable(${PROJECT_NAME} ${CPP_SOURCE_FILES})
 set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
